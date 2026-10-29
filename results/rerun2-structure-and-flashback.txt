@@ -1,0 +1,48 @@
+== structure
+TRANSACTIONS partitioning    RANGE interval NUMTOYMINTERVAL(1, 'MONTH'), 25 partitions
+compression of partitions    DISABLED/-: 25
+indexes                      11: ACCOUNTS_NO_UK (VALID), ACCOUNTS_PK (VALID), BRANCHES_CODE_UK (VALID), BRANCHES_PK (VALID), CARDS_PAN_UK (VALID), CARDS_PK (VALID), CUSTOMERS_NID_UK (VALID), CUSTOMERS_PK (VALID), TRANSACTIONS_ACCT_TS_IX (VALID), TRANSACTIONS_PK (VALID), TRANSACTIONS_STATUS_TS_AMT_IX (N/A)
+constraints                  13 (PRU), not validated: 0
+tablespace of the tables     (partitioned), DATA
+== drill 2b on the ADB: bad batch, then FLASHBACK TABLE
+accounts before: (480000, 1030707596653958)
+bad batch: 68571 balances set to 0
+accounts after the batch: (480000, 1030559391826961)
+Traceback (most recent call last):
+  File "/home/huy/work/oracle-oci-cloud-lab/scripts/structure_and_flashback.py", line 68, in <module>
+    main()
+    ~~~~^^
+  File "/home/huy/work/oracle-oci-cloud-lab/scripts/structure_and_flashback.py", line 58, in main
+    cur.execute("flashback table bank.accounts to timestamp :ts", ts=ts)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/huy/.venvs/dba/lib/python3.13/site-packages/oracledb/cursor.py", line 898, in wrapped_f
+    return self._connection._impl.process_sync_operation(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, f.__name__, args, kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "src/oracledb/impl/base/connection.pyx", line 464, in oracledb.base_impl.BaseConnImpl.process_sync_operation
+  File "src/oracledb/impl/base/connection.pyx", line 451, in oracledb.base_impl.BaseConnImpl.process_sync_operation
+  File "/home/huy/.venvs/dba/lib/python3.13/site-packages/oracledb/cursor.py", line 211, in _execute
+    yield from impl.execute(self)
+  File "src/oracledb/impl/thin/cursor.pyx", line 295, in execute
+  File "src/oracledb/impl/base/connection.pyx", line 458, in oracledb.base_impl.BaseConnImpl.process_sync_operation
+  File "src/oracledb/impl/thin/connection.pyx", line 691, in oracledb.thin_impl.ThinConnImpl._process_sync_operation_sub_op
+  File "src/oracledb/impl/thin/protocol.pyx", line 271, in oracledb.thin_impl.Protocol._process_single_message
+  File "src/oracledb/impl/thin/protocol.pyx", line 272, in oracledb.thin_impl.Protocol._process_single_message
+  File "src/oracledb/impl/thin/protocol.pyx", line 262, in oracledb.thin_impl.Protocol._process_round_trip
+  File "src/oracledb/impl/thin/protocol.pyx", line 258, in oracledb.thin_impl.Protocol._process_round_trip
+  File "src/oracledb/impl/thin/protocol.pyx", line 220, in oracledb.thin_impl.Protocol._process_message
+  File "src/oracledb/impl/thin/protocol.pyx", line 199, in oracledb.thin_impl.Protocol._process_message
+  File "src/oracledb/impl/thin/messages/execute.pyx", line 296, in oracledb.thin_impl.ExecuteMessage.process
+  File "src/oracledb/impl/thin/messages/base.pyx", line 925, in oracledb.thin_impl.Message.process
+  File "src/oracledb/impl/base/buffer.pyx", line 376, in oracledb.base_impl.Buffer.read_ub1
+  File "src/oracledb/impl/thin/packet.pyx", line 312, in oracledb.thin_impl.ReadBuffer._get_raw
+  File "src/oracledb/impl/thin/packet.pyx", line 729, in oracledb.thin_impl.ReadBuffer.wait_for_packets_sync
+  File "src/oracledb/impl/thin/transport.pyx", line 523, in oracledb.thin_impl.Transport.read_packet
+  File "/home/huy/.venvs/dba/lib/python3.13/site-packages/oracledb/errors.py", line 215, in _raise_err
+    raise _create_exception(error_num, context_error_message, cause, **args)
+oracledb.exceptions.DatabaseError: DPY-4011: the database or network closed the connection
+Help: https://python-oracledb.readthedocs.io/en/latest/user_guide/troubleshooting.html#dpy-4011
+FLASHBACK TABLE bank.accounts: still running after 40.4 min (2,426 s, 1.75 M undo records for 68,571 changed rows) — session killed (re-run 2026-10-30)
