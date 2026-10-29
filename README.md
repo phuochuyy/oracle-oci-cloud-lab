@@ -53,7 +53,18 @@ items my security lab lists as not built.
 
 Every resource was created with the Always Free flag or is free (ADB `isFreeTier`, 1 ECPU, 20 GB; one bucket
 with 172 MB; Data Safe for ADB). A tenancy budget of 1 SGD/month alerts on any actual spend (1 %) or forecast
-(100 %). After the run: CLEANUP_RESULT
+(100 %). After the run, each deletion checked by
+listing the resource type again:
+
+| Deleted | Check |
+|---------|-------|
+| Data Safe target, then its 2 security + 2 user assessments (deleting the target left them behind) | 0 left |
+| Autonomous Database | `TERMINATED` — the first `delete --wait-for-state` returned without effect; the second call worked |
+| dump object + bucket | `BucketNotFound` |
+| IAM policy + dynamic group | 0 left |
+| wallet, staged dump on the host, export files and directory object on prm3 | removed |
+
+Kept: the compartment and the budget alert (no cost). Credit used: none expected — everything was Always Free.
 
 ## Problems on the way
 
