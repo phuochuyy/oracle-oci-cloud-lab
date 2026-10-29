@@ -19,6 +19,32 @@
 Scripts: [`checksums.py`](scripts/checksums.py), [`import_adb.py`](scripts/import_adb.py),
 [`access_model.py`](scripts/access_model.py), [`structure_and_flashback.py`](scripts/structure_and_flashback.py).
 
+## Re-run 2026-10-30 — same steps, new ADB, everything deleted again
+
+| Step | Run 1 (10-29) | Run 2 (10-30) |
+|------|---------------|---------------|
+| Export | 41 s, 172,503,040 bytes | 43 s, **same size** |
+| Source checksums | — | **identical to run 1** (PERF unchanged) |
+| Upload | 49 s | first attempt **hung** (see below), second 52 s |
+| ADB | 26ai, 23.26.4.1 | 26ai, 23.26.4.1 |
+| Access model | SYSDBA refused, ORA-01031 ×3, TDE 6/7, TCPS, 13 audit policies | identical |
+| Import (`DBMS_DATAPUMP`, resource principal) | 2 min 55 s, 0 errors | 2 min 48 s; one `ORA-20404` on the first `list_objects` — the new policy needed a few seconds, the retry loop saw the file at once |
+| Checksums ADB vs source | identical | **identical** |
+| Structure | interval partitions kept, compression lost | same (compression lost again — the import, not chance) |
+| `FLASHBACK TABLE` of 68,571 rows | not finished after 36 min → killed | **not finished after 40.4 min** (1.75 M undo records) → killed |
+| Repair from my own export | 25 s | 31 s, checksums identical again |
+| Data Safe | 0 high / 0 medium / 6 low / 13 advisory; 9 users | identical |
+| Clean-up | every type checked: 0 left | every type checked: 0 left, spend 0.00 |
+
+Evidence: `results/rerun2-*`.
+
+**What the re-run added:** the host's public IP changed in the middle of the upload (the ISP reconnected). The
+OCI CLI's upload threads had no connection left and waited — 27 min, 0 of 6 parts done, no error. Stopped,
+the unfinished multipart upload aborted (no orphan parts in the bucket), uploaded again with 2 parallel parts,
+`--connection-timeout 10 --read-timeout 60` and an overall `timeout`: 52 s. The same IP change broke the ADB
+access list (it allowed only the old address): updated to the new one, the old one removed. An IP allow-list
+on a home connection needs checking before every session.
+
 ## On-premises lab vs Autonomous Database — what changes for the DBA
 
 | | On-premises lab (23.26.1) | Autonomous Database Always Free (26ai = 23.26.4.1) |
