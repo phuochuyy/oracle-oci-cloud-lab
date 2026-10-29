@@ -1,0 +1,36 @@
+# Data Safe, target = the lab ADB, assessments refreshed after the import (2026-10-29T12:16:44Z)
+== Security Assessment, HIGH
+  (none)
+== Security Assessment, MEDIUM
+  (none)
+== Security Assessment, LOW
+- Users with Unlimited Concurrent Sessions | Found 2 users with the ability to create unlimited concurrent sessions.
+- Users with Gradual Password Rollover | Found profiles with PASSWORD_ROLLOVER_TIME set for more than 14 days. No user found in rollover period. 
+- Users with Unlimited Password Lifetime | Password lifetime is set for all users. All users have restrictions on how many times they can reuse their passwords, and the reuse number is low. All users have restrictions on the ability to reuse t
+- Users with Unlimited Session Idle Time | Found 1 user who can remain connected to the database indefinitely without having their sessions terminated due to inactivity. MAX_IDLE_TIME and MAX_IDLE_BLOCKER_TIME are configured correctly.
+- Transparent Data Encryption | Found 6 encrypted tablespaces. No unencrypted tablespaces found. No encrypted columns found. TDE is configured using legacy approach by using sqlnet.ora. 
+- Triggers | Found 1 logon trigger. Found 2 disabled triggers. 
+== Security Assessment, ADVISORY
+- Schema Privilege Grants | No schema privilege granted in database. 
+- SQL Firewall | SQL Firewall is not enabled. 
+- Privilege Analysis | Privilege Analysis policies not found. Privilege Analysis has never been run.
+- Database Vault | Database Vault is not enabled.
+- Audit Storage | One or more audit trails are in the SYSAUX tablespace. Examined 3 audit trails. Audit tablespace with acceptable free space. No alerts were defined for Audit tablespaces.
+- Audit Object Actions | No auditing enabled for objects. ORA$DICTIONARY_SENS_COL_ACCESS policy is enabled. 
+- Audit Roles with System Privileges | No Audit Policy enabled on roles.
+- Audit Label Security | No audit policies configured through Oracle Label Security APIs. No unified audit policies found for Oracle Label Security. 
+- Fine Grained Audit | No fine grained audit policies found.
+- Transparent Sensitive Data Protection (TSDP) | No data tagged with sensitive types found. 
+- Real Application Security | No RAS policies found.
+- Oracle Label Security | No Label Security policies found. 
+- Data Redaction | No data redaction policies found. No user can create or manage Data Redaction Policies on all schemas using system level grant. No user can create or manage Data Redaction Policies using schema level 
+== User Assessment
+- ADBSNMP HIGH LOCKED PRIVILEGED,SCHEMA DV_ADMIN
+- ADB_APP_STORE LOW LOCKED SCHEMA 
+- ADMIN CRITICAL OPEN PRIVILEGED AUDIT_ADMIN,DV_ADMIN,PDB_DBA
+- BANK LOW OPEN SCHEMA 
+- DCAT_ADMIN LOW LOCKED SCHEMA 
+- DS$ADMIN CRITICAL OPEN_AND_IN_ROLLOVER PRIVILEGED AUDIT_ADMIN
+- GGADMIN CRITICAL LOCKED PRIVILEGED,SCHEMA DV_ADMIN,PDB_DBA
+- RMAN$CATALOG CRITICAL LOCKED PRIVILEGED,SCHEMA 
+- RMAN$VPC LOW OPEN SCHEMA 
