@@ -1,0 +1,13 @@
+== structure
+TRANSACTIONS partitioning    RANGE interval NUMTOYMINTERVAL(1, 'MONTH'), 25 partitions
+compression of partitions    DISABLED/-: 25
+indexes                      11: ACCOUNTS_NO_UK (VALID), ACCOUNTS_PK (VALID), BRANCHES_CODE_UK (VALID), BRANCHES_PK (VALID), CARDS_PAN_UK (VALID), CARDS_PK (VALID), CUSTOMERS_NID_UK (VALID), CUSTOMERS_PK (VALID), TRANSAC
+constraints                  13 (PRU), not validated: 0
+tablespace of the tables     (partitioned), DATA
+== drill 2b on the ADB: bad batch, then FLASHBACK TABLE
+accounts before: (480000, 1030707596653958)
+bad batch: 68571 balances set to 0
+accounts after the batch: (480000, 1030559391826961)
+oracledb.exceptions.DatabaseError: DPY-4011: the database or network closed the connection
+
+FLASHBACK TABLE bank.accounts: still running after 36 min (2,148 s, 1.6 M undo records for 68,571 changed rows) — session killed by me

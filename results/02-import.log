@@ -1,0 +1,41 @@
+resource principal enabled
+objects the ADB can see in the bucket: ['bankdb_01.dmp']
+schema BANK ready (no authentication)
+BANK.TRANSACTIONS exists: import already done, only printing its log
+Master table "ADMIN"."BANKDB_IMP" successfully loaded/unloaded
+Starting "ADMIN"."BANKDB_IMP":  
+Processing object type TABLE_EXPORT/TABLE/TABLE
+Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+. . imported "BANK"."CUSTOMERS"                              6 MB  320000 rows
+. . imported "BANK"."CARDS"                                3.9 MB  384000 rows
+. . imported "BANK"."BRANCHES"                             6.5 KB     100 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P452"              6.3 MB  339497 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P462"              6.3 MB  340053 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P459"              6.3 MB  339286 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P461"              6.3 MB  341310 rows
+. . imported "BANK"."TRANSACTIONS":"P_BEFORE_2024"         5.4 KB       0 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P456"              6.4 MB  344129 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P466"              6.1 MB  328595 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P448"              6.1 MB  328226 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P460"              6.3 MB  338397 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P468"              6.1 MB  327464 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P457"              6.3 MB  339556 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P453"              6.3 MB  339974 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P458"              6.1 MB  326911 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P467"              6.3 MB  339288 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P469"              6.1 MB  328539 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P450"              6.3 MB  338467 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P454"              5.7 MB  306549 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P463"              6.3 MB  339589 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P470"              6.3 MB  339379 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P464"              6.1 MB  328520 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P451"              6.3 MB  339820 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P465"              6.1 MB  327804 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P449"              6.1 MB  328655 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P447"              6.1 MB  328349 rows
+. . imported "BANK"."ACCOUNTS"                             5.9 MB  480000 rows
+. . imported "BANK"."TRANSACTIONS":"SYS_P455"                6 MB  321643 rows
+Processing object type TABLE_EXPORT/TABLE/INDEX/INDEX
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Job "ADMIN"."BANKDB_IMP" successfully completed at Thu Oct 29 12:00:48 2026 elapsed 0 00:02:55
