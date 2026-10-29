@@ -1,0 +1,13 @@
+# identifiers, credentials, key material: local only
+oci.env
+lab.env
+wallet/
+*.zip
+*.pem
+*.sso
+*.p12
+# dump files and staging
+*.dmp
+stage/
+# interview preparation notes: kept on my machine only
+INTERVIEW.md

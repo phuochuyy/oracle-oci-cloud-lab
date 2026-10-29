@@ -1,0 +1,14 @@
+connect as SYSDBA                          ORA-01017: invalid credential or not authorized; logon denied
+change an instance parameter               ORA-01031: insufficient privileges
+create a tablespace                        ORA-01031: insufficient privileges
+switch a redo log                          ORA-01031: insufficient privileges
+read the alert log location                no rows (not visible to ADMIN)
+create a directory on the OS               done
+TDE: keystore and encrypted tablespaces    OPEN/, encrypted tablespaces: 6 of 7
+protocol of this session                   tcps
+unified audit policies enabled             13: ADB_ADMIN_AUDIT, ADB_ADMIN_AUDIT, ADB_MCP_SERVER_ACCESS_AUDIT, ADB_PARURL_ACCESS_AUDIT, ADB_PARURL_PKG_ACCESS_AUDIT, COMMON_USER_LOGONS, COMMON_US
+archivelog mode / flashback                ARCHIVELOG / flashback YES
+# follow-up
+directory LAB_TMP really points to: /u03/dbfs/5CEAD5BC0C07EA3FE063325F000A62BA/data/tmp
+tablespaces not encrypted: SAMPLESCHEMA (PERMANENT)
+LAB_TMP dropped

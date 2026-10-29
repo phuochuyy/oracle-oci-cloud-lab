@@ -1,0 +1,71 @@
+;;; 
+Export: Release 23.26.1.0.0 - Production on Thu Oct 29 18:45:29 2026
+Version 23.26.1.0.0
+
+Copyright (c) 1982, 2026, Oracle and/or its affiliates.  All rights reserved.
+;;; 
+Connected to: Oracle AI Database 26ai Enterprise Edition Release 23.26.1.0.0 - Production
+29-OCT-26 18:45:33.111: ;;; **************************************************************************
+29-OCT-26 18:45:33.114: ;;; Parfile values:
+29-OCT-26 18:45:33.116: ;;;  parfile:  metrics=Y
+29-OCT-26 18:45:33.118: ;;;  parfile:  logtime=all
+29-OCT-26 18:45:33.120: ;;;  parfile:  exclude=statistics
+29-OCT-26 18:45:33.122: ;;;  parfile:  encryption_password=********
+29-OCT-26 18:45:33.124: ;;;  parfile:  encryption_algorithm=AES256
+29-OCT-26 18:45:33.128: ;;;  parfile:  encryption_mode=PASSWORD
+29-OCT-26 18:45:33.133: ;;;  parfile:  encryption=ALL
+29-OCT-26 18:45:33.137: ;;;  parfile:  compression=ALL
+29-OCT-26 18:45:33.141: ;;;  parfile:  flashback_scn=33131694
+29-OCT-26 18:45:33.145: ;;;  parfile:  tables=BANK.BRANCHES,BANK.CUSTOMERS,BANK.ACCOUNTS,BANK.CARDS,
+29-OCT-26 18:45:33.147: ;;;  _parfile: BANK.TRANSACTIONS
+29-OCT-26 18:45:33.150: ;;;  parfile:  logfile=bankdb_exp.log
+29-OCT-26 18:45:33.152: ;;;  parfile:  filesize=200M
+29-OCT-26 18:45:33.154: ;;;  parfile:  dumpfile=bankdb_%U.dmp
+29-OCT-26 18:45:33.156: ;;;  parfile:  directory=oci_exp
+29-OCT-26 18:45:33.158: ;;; **************************************************************************
+29-OCT-26 18:45:33.944: Starting "SYS"."SYS_EXPORT_TABLE_01":  "/******** AS SYSDBA" parfile=/tmp/exp.par 
+29-OCT-26 18:45:34.391: W-1 Startup on instance 1 took 0 seconds
+29-OCT-26 18:45:35.885: W-1 Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+29-OCT-26 18:45:38.788: W-1 Processing object type TABLE_EXPORT/TABLE/TABLE
+29-OCT-26 18:45:39.832: W-1      Completed 5 TABLE objects in 3 seconds
+29-OCT-26 18:45:40.770: W-1 Processing object type TABLE_EXPORT/TABLE/INDEX/INDEX
+29-OCT-26 18:45:40.903: W-1      Completed 2 INDEX objects in 0 seconds
+29-OCT-26 18:45:42.022: W-1 Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+29-OCT-26 18:45:42.036: W-1      Completed 9 CONSTRAINT objects in 1 seconds
+29-OCT-26 18:45:51.933: W-1 Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+29-OCT-26 18:45:51.946: W-1      Completed 4 REF_CONSTRAINT objects in 0 seconds
+29-OCT-26 18:45:52.786: W-1 . . exported "BANK"."CUSTOMERS"                              6 MB  320000 rows in 0 seconds using direct_path
+29-OCT-26 18:45:53.314: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P456"              6.4 MB  344129 rows in 1 seconds using direct_path
+29-OCT-26 18:45:53.829: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P461"              6.3 MB  341310 rows in 0 seconds using direct_path
+29-OCT-26 18:45:54.338: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P462"              6.3 MB  340053 rows in 1 seconds using direct_path
+29-OCT-26 18:45:54.780: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P453"              6.3 MB  339974 rows in 0 seconds using direct_path
+29-OCT-26 18:45:55.303: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P451"              6.3 MB  339820 rows in 1 seconds using direct_path
+29-OCT-26 18:45:55.753: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P463"              6.3 MB  339589 rows in 0 seconds using direct_path
+29-OCT-26 18:45:56.205: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P457"              6.3 MB  339556 rows in 1 seconds using direct_path
+29-OCT-26 18:45:56.717: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P452"              6.3 MB  339497 rows in 0 seconds using direct_path
+29-OCT-26 18:45:57.230: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P470"              6.3 MB  339379 rows in 1 seconds using direct_path
+29-OCT-26 18:45:57.669: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P467"              6.3 MB  339288 rows in 0 seconds using direct_path
+29-OCT-26 18:45:58.186: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P459"              6.3 MB  339286 rows in 1 seconds using direct_path
+29-OCT-26 18:45:58.673: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P450"              6.3 MB  338467 rows in 0 seconds using direct_path
+29-OCT-26 18:45:59.126: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P460"              6.3 MB  338397 rows in 1 seconds using direct_path
+29-OCT-26 18:45:59.654: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P449"              6.1 MB  328655 rows in 0 seconds using direct_path
+29-OCT-26 18:46:00.102: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P466"              6.1 MB  328595 rows in 1 seconds using direct_path
+29-OCT-26 18:46:00.587: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P469"              6.1 MB  328539 rows in 0 seconds using direct_path
+29-OCT-26 18:46:01.146: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P464"              6.1 MB  328520 rows in 1 seconds using direct_path
+29-OCT-26 18:46:01.658: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P447"              6.1 MB  328349 rows in 0 seconds using direct_path
+29-OCT-26 18:46:02.105: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P448"              6.1 MB  328226 rows in 1 seconds using direct_path
+29-OCT-26 18:46:02.616: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P465"              6.1 MB  327804 rows in 0 seconds using direct_path
+29-OCT-26 18:46:03.040: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P468"              6.1 MB  327464 rows in 1 seconds using direct_path
+29-OCT-26 18:46:03.468: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P458"              6.1 MB  326911 rows in 0 seconds using direct_path
+29-OCT-26 18:46:03.921: W-1 . . exported "BANK"."ACCOUNTS"                             5.9 MB  480000 rows in 0 seconds using direct_path
+29-OCT-26 18:46:04.438: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P455"                6 MB  321643 rows in 1 seconds using direct_path
+29-OCT-26 18:46:04.865: W-1 . . exported "BANK"."TRANSACTIONS":"SYS_P454"              5.7 MB  306549 rows in 0 seconds using direct_path
+29-OCT-26 18:46:05.225: W-1 . . exported "BANK"."CARDS"                                3.9 MB  384000 rows in 1 seconds using direct_path
+29-OCT-26 18:46:05.313: W-1 . . exported "BANK"."BRANCHES"                             6.5 KB     100 rows in 0 seconds using direct_path
+29-OCT-26 18:46:05.364: W-1 . . exported "BANK"."TRANSACTIONS":"P_BEFORE_2024"         5.4 KB       0 rows in 0 seconds using direct_path
+29-OCT-26 18:46:06.326: W-1      Completed 29 TABLE_EXPORT/TABLE/TABLE_DATA objects in 13 seconds
+29-OCT-26 18:46:06.595: W-1 Master table "SYS"."SYS_EXPORT_TABLE_01" successfully loaded/unloaded
+29-OCT-26 18:46:06.646: ******************************************************************************
+29-OCT-26 18:46:06.646: Dump file set for SYS.SYS_EXPORT_TABLE_01 is:
+29-OCT-26 18:46:06.647:   /u02/backup/oci_exp/bankdb_01.dmp
+29-OCT-26 18:46:06.652: Job "SYS"."SYS_EXPORT_TABLE_01" successfully completed at Thu Oct 29 18:46:06 2026 elapsed 0 00:00:34
