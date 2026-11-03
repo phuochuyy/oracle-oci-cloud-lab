@@ -1,0 +1,8 @@
+# Data Safe, re-run 3 (2026-11-03/04), assessments refreshed after the import
+Security Assessment HIGH: 0
+Security Assessment MEDIUM: 0
+Security Assessment LOW: 6
+Security Assessment ADVISORY: 13
+Security Assessment EVALUATE: 60
+Security Assessment PASS: 21
+User Assessment: 9 users {'CRITICAL': 4, 'HIGH': 1, 'LOW': 4}

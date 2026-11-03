@@ -1,0 +1,35 @@
+# Clean-up check, re-run 3 (after ADB, bucket, Data Safe target, assessments, IAM policy + dynamic group were deleted)
+## Data Safe API (per type, not DELETED)
+target-database: 0
+crypto-assessment: 0
+audit-trail: 0
+audit-profile: 1
+database-security-config: 1
+## other APIs
+autonomous databases not TERMINATED: 0
+buckets: 0
+## Resource Search (index; shows other OCIDs for crypto assessments, NotFound on get)
+== resources in compartment oracle-lab (not terminated/deleted)
++-------------------------------------+-----------------+--------------------------------+
+| name                                | state           | type                           |
++-------------------------------------+-----------------+--------------------------------+
+| DatabaseSecurityConfig1793725185210 | NEEDS_ATTENTION | DataSafeDatabaseSecurityConfig |
+| AuditProfile_1793725184640          | ACTIVE          | DataSafeAuditProfile           |
+| AuditPolicy_1793725184360           | ACTIVE          | DataSafeAuditPolicy            |
+| CA_1793725184088                    | ACTIVE          | DataSafeCryptoAssessment       |
+| CA_1793303184446                    | ACTIVE          | DataSafeCryptoAssessment       |
+| CA_1793274898429                    | ACTIVE          | DataSafeCryptoAssessment       |
++-------------------------------------+-----------------+--------------------------------+
+== IAM policies (tenancy)
++---------------------+--------+
+| name                | state  |
++---------------------+--------+
+| Tenant Admin Policy | ACTIVE |
++---------------------+--------+
+== cost since 2026-10-28 by service
++------+----------+----------------+
+| cost | currency | service        |
++------+----------+----------------+
+| 0.0  | SGD      | Object Storage |
+| 0.0  | SGD      | Database       |
++------+----------+----------------+
