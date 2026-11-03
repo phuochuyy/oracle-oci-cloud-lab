@@ -1,0 +1,57 @@
+resource principal enabled
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+list_objects: ORA-20404: Object not found - https://objectstorage.ap-singapore-2.oraclecloud.com/n/<namespace>/b/bankdb-dump/o/ - retry in 10 s
+schema BANK ready (no authentication)
+Traceback (most recent call last):
+  File "/home/huy/work/oracle-oci-cloud-lab/scripts/import_adb.py", line 92, in <module>
+    main()
+    ~~~~^^
+  File "/home/huy/work/oracle-oci-cloud-lab/scripts/import_adb.py", line 47, in main
+    import_dump(cur, base, e["DP_ENC_PASSWORD"])
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/huy/work/oracle-oci-cloud-lab/scripts/import_adb.py", line 54, in import_dump
+        cur.execute("""
+        ~~~~~~~~~~~^^^^
+    declare
+    ^^^^^^^
+    ...<13 lines>...
+      :state := st;
+      ^^^^^^^^^^^^^
+    end;""", dump=base + "bankdb_01.dmp", cred=CRED, encpw=encpw, state=state)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/huy/work/tools/venvs/dba/lib/python3.13/site-packages/oracledb/cursor.py", line 898, in wrapped_f
+    return self._connection._impl.process_sync_operation(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, f.__name__, args, kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "src/oracledb/impl/base/connection.pyx", line 464, in oracledb.base_impl.BaseConnImpl.process_sync_operation
+  File "src/oracledb/impl/base/connection.pyx", line 451, in oracledb.base_impl.BaseConnImpl.process_sync_operation
+  File "/home/huy/work/tools/venvs/dba/lib/python3.13/site-packages/oracledb/cursor.py", line 211, in _execute
+    yield from impl.execute(self)
+  File "src/oracledb/impl/thin/cursor.pyx", line 295, in execute
+  File "src/oracledb/impl/base/connection.pyx", line 458, in oracledb.base_impl.BaseConnImpl.process_sync_operation
+  File "src/oracledb/impl/thin/connection.pyx", line 691, in oracledb.thin_impl.ThinConnImpl._process_sync_operation_sub_op
+  File "src/oracledb/impl/thin/protocol.pyx", line 271, in oracledb.thin_impl.Protocol._process_single_message
+  File "src/oracledb/impl/thin/protocol.pyx", line 272, in oracledb.thin_impl.Protocol._process_single_message
+  File "src/oracledb/impl/thin/protocol.pyx", line 262, in oracledb.thin_impl.Protocol._process_round_trip
+  File "src/oracledb/impl/thin/protocol.pyx", line 258, in oracledb.thin_impl.Protocol._process_round_trip
+  File "src/oracledb/impl/thin/protocol.pyx", line 246, in oracledb.thin_impl.Protocol._process_message
+  File "src/oracledb/impl/thin/messages/base.pyx", line 104, in oracledb.thin_impl.Message._check_and_raise_exception
+oracledb.exceptions.DatabaseError: ORA-39001: invalid argument value
+ORA-06512: at "SYS.DBMS_SYS_ERROR", line 79
+ORA-06512: at "SYS.DBMS_DATAPUMP", line 5038
+ORA-06512: at "SYS.DBMS_DATAPUMP", line 5289
+ORA-06512: at line 6
+Help: https://docs.oracle.com/error-help/db/ora-39001/

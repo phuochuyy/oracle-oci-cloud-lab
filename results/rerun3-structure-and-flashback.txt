@@ -1,0 +1,11 @@
+== structure
+TRANSACTIONS partitioning    RANGE interval NUMTOYMINTERVAL(1, 'MONTH'), 25 partitions
+compression of partitions    DISABLED/-: 25
+indexes                      11: ACCOUNTS_NO_UK (VALID), ACCOUNTS_PK (VALID), BRANCHES_CODE_UK (VALID), BRANCHES_PK (VALID), CARDS_PAN_UK (VALID), CARDS_PK (VALID), CUSTOMERS_NID_UK (VALID), CUSTOMERS_PK (VALID), TRANSACTIONS_ACCT_TS_IX (N/A), TRANSACTIONS_PK (VALID), TRANSACTIONS_STATUS_TS_AMT_IX (N/A)
+constraints                  13 (PRU), not validated: 0
+tablespace of the tables     (partitioned), DATA
+== drill 2b on the ADB: bad batch, then FLASHBACK TABLE
+accounts before: (480000, 1030590447879090)
+bad batch: 68571 balances set to 0
+accounts after the batch: (480000, 1031059528195652)
+FLASHBACK TABLE skipped (--no-flashback): repair with repair_from_dump.py

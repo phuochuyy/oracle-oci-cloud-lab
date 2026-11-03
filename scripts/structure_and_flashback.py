@@ -1,11 +1,14 @@
 """After the import: did the structure survive, and does logical recovery work as on-premises?
 
-usage: structure_and_flashback.py
+usage: structure_and_flashback.py [--no-flashback]
+   --no-flashback: run the bad batch but skip FLASHBACK TABLE (runs 1 and 2: unfinished after 36 and 40.4 min);
+                   the damage is then repaired with repair_from_dump.py
 1. partitions, indexes, constraints of BANK on the ADB
 2. drill 2b of the backup lab, on the ADB: a bad batch zeroes 1/7 of the balances and commits, then
    FLASHBACK TABLE to the timestamp before it — timed, checked with the same checksum as the migration
 """
 import pathlib
+import sys
 import time
 
 import oracledb
@@ -53,6 +56,10 @@ def main():
     print("bad batch:", cur.rowcount, "balances set to 0")
     con.commit()
     print("accounts after the batch:", cur.execute(CHK).fetchone())
+    if "--no-flashback" in sys.argv:
+        print("FLASHBACK TABLE skipped (--no-flashback): repair with repair_from_dump.py")
+        con.close()
+        return
     t0 = time.time()
     cur.execute("alter table bank.accounts enable row movement")
     cur.execute("flashback table bank.accounts to timestamp :ts", ts=ts)
