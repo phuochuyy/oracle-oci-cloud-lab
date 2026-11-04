@@ -1,6 +1,18 @@
 <!-- Full write-up, moved here from the repository's front page (README.md), which is now a short summary. -->
 # Oracle on OCI — BANKDB to Autonomous Database (Always Free)
 
+## Summary of the runs
+
+| Step | Run 1 | Run 2 | Run 3 |
+|------|-------|-------|-------|
+| Export: consistent at one SCN, `COMPRESSION=ALL`, AES256 password encryption | 41 s, 172.5 MB | 43 s | 38 s |
+| Import inside the ADB from Object Storage, resource principal | 2 min 55 s | 2 min 48 s | 3 min 00 s (185 s wall) |
+| Row counts + checksums of all 5 tables, source AS OF the export SCN vs ADB | identical | identical | identical |
+| Bad batch (68,571 balances zeroed): `FLASHBACK TABLE` on 1 ECPU | > 36 min, killed | > 40.4 min, killed | skipped |
+| Repair from my own dump | 25 s | 31 s | 18 s |
+| Data Safe security assessment | 0 high / 0 medium | 0 high / 0 medium | 0 high / 0 medium |
+
+
 > Status: **done** — one run, then every cloud resource deleted (only a compartment and a budget alert are
 > kept; both cost nothing). The on-premises side is the [performance lab](https://github.com/phuochuyy/oracle-performance-tuning-lab)'s
 > BANKDB on Oracle 23.26 (KVM lab).
